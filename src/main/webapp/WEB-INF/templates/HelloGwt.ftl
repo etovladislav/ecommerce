@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>HelloGWT</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: verdana, sans-serif;
+        }
+        h1{
+            font-size: 2em;
+            font-weight: bold;
+            color: #777777;
+            margin: 40px 0px 70px;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" language="javascript" src="../resources.hellogwt/resources.hellogwt.nocache.js"></script>
+</head>
+<body>
+<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+        style="position:absolute;width:0;height:0;border:0">
+</iframe>
+</body>
+</html>

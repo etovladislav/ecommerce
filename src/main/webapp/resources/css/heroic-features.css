@@ -1,0 +1,20 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background: url("../img/tort.jpg") center center fixed no-repeat;
+    -moz-background-size: cover; /* Firefox до 4.0 */
+    -webkit-background-size: cover; /* Safari и Chrome */
+    -o-background-size: cover; /* Opera до версии 10.53 */
+    background-size: cover; /* CSS3 */
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
