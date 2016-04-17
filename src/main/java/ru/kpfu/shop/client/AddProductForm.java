@@ -103,10 +103,6 @@ public class AddProductForm {
                     status.setText("Заполните все поля!");
                 } else {
                     form.submit();
-                    status.setText("Продукт успешно добавлен!");
-                    priceProductForm.setValue("");
-                    descriptionForm.setValue("");
-                    nameForm.setValue("");
                 }
             }
         });
@@ -114,7 +110,10 @@ public class AddProductForm {
         form.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler() {
             @Override
             public void onSubmitComplete(FormPanel.SubmitCompleteEvent event) {
-                Window.alert("OKEY");
+                status.setText("Продукт успешно добавлен!");
+                priceProductForm.setValue("");
+                descriptionForm.setValue("");
+                nameForm.setValue("");
             }
         });
         panel.setSpacing(10);
