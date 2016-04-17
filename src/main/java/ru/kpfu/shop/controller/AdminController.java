@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import ru.kpfu.shop.form.ProductForm;
 import ru.kpfu.shop.model.Category;
 import ru.kpfu.shop.model.Order;
@@ -14,7 +13,6 @@ import ru.kpfu.shop.repository.OrderRepository;
 import ru.kpfu.shop.repository.ProductRepository;
 import ru.kpfu.shop.repository.UserRepository;
 import ru.kpfu.shop.service.ProductService;
-import ru.kpfu.shop.util.SecurityUtils;
 
 import javax.servlet.http.HttpServletResponse;
 

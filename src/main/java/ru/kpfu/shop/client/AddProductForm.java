@@ -9,9 +9,7 @@ import com.google.gwt.user.client.ui.*;
 import ru.kpfu.shop.client.service.GoodService;
 import ru.kpfu.shop.client.service.GoodServiceAsync;
 import ru.kpfu.shop.model.Category;
-import ru.kpfu.shop.service.impl.GoodServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,6 +48,7 @@ public class AddProductForm {
 
         final Label status = new Label("");
         panel.add(status);
+
         //Product Name input
         Label productNameLabel = new Label("Название продукта");
         final TextBox nameForm = new TextBox();
@@ -62,6 +61,7 @@ public class AddProductForm {
         //Product description input
         Label productDescriptionLabel = new Label("Описание продукта");
         final TextBox descriptionForm = new TextBox();
+        descriptionForm.getElement().setAttribute("type", "text");
         descriptionForm.setName("description");
         panel.add(productDescriptionLabel);
         panel.add(descriptionForm);
@@ -85,7 +85,7 @@ public class AddProductForm {
         //end product category
 
         //FileUpload input
-        Label fileUploadLabel = new Label("Select a file:");
+        Label fileUploadLabel = new Label("Выберете картинку:");
         final FileUpload fileUpload = new FileUpload();
         fileUpload.setName("img");
         panel.add(fileUploadLabel);
@@ -101,6 +101,7 @@ public class AddProductForm {
                 String filename = fileUpload.getFilename();
                 if (filename.length() == 0) {
                     status.setText("Заполните все поля!");
+                    status.getElement().setClassName("error");
                 } else {
                     form.submit();
                 }
@@ -111,6 +112,7 @@ public class AddProductForm {
             @Override
             public void onSubmitComplete(FormPanel.SubmitCompleteEvent event) {
                 status.setText("Продукт успешно добавлен!");
+                status.getElement().setClassName("success");
                 priceProductForm.setValue("");
                 descriptionForm.setValue("");
                 nameForm.setValue("");

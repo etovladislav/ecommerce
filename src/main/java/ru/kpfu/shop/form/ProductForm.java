@@ -2,8 +2,10 @@ package ru.kpfu.shop.form;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.Serializable;
 
-public class ProductForm {
+
+public class ProductForm implements Serializable {
 
     private String description;
 

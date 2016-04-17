@@ -1,5 +1,7 @@
 package ru.kpfu.shop.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,6 +13,7 @@ public class Product implements Serializable {
     Long id;
 
     @Lob
+    @Type(type = "org.hibernate.type.StringClobType")
     private String description;
 
     private String img;

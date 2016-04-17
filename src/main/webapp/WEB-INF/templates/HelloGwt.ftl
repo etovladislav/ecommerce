@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>HelloGWT</title>
+    <title>Admin</title>
     <style>
         body{
             text-align: center;
@@ -15,6 +15,30 @@
             color: #777777;
             margin: 40px 0px 70px;
             text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 18px;
+        }
+
+        .success {
+            color: #4cae4c;
+            font-size: 18px;
+        }
+
+        .gwt-TabPanel {
+            margin: 10 auto;
+        }
+
+        .gwt-textBox {
+            width: 300px;
+            height: 30px;
+            font-size: 17px;
+        }
+
+        .gwt-Label {
+            font-weight: bolder;
         }
     </style>
     <script type="text/javascript" language="javascript" src="../resources.hellogwt/resources.hellogwt.nocache.js"></script>

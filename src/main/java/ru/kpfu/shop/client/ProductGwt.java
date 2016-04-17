@@ -1,7 +1,9 @@
 package ru.kpfu.shop.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TabPanel;
 
 
 
@@ -25,7 +27,7 @@ public class ProductGwt implements EntryPoint {
 
         //create tabs
         tabPanel.add(new AddProductForm().getAddProductForm(), tab1Title);
-        tabPanel.add(label2, tab2Title);
+        tabPanel.add(label2, new CreateCategoryForm().getCreateCategoryForm());
         tabPanel.add(label3, tab3Title);
 
         //select first tab
