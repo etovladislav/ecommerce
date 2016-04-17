@@ -6,7 +6,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabPanel;
 
 
-
 public class ProductGwt implements EntryPoint {
 
 
@@ -27,7 +26,7 @@ public class ProductGwt implements EntryPoint {
 
         //create tabs
         tabPanel.add(new AddProductForm().getAddProductForm(), tab1Title);
-        tabPanel.add(label2, new CreateCategoryForm().getCreateCategoryForm());
+        tabPanel.add(new CreateCategoryForm().getCreateCategoryForm(), label2);
         tabPanel.add(label3, tab3Title);
 
         //select first tab
