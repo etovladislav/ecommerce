@@ -19,12 +19,14 @@ public class AddProductForm {
 
     private GoodServiceAsync goodServiceAsyncService = GWT.create(GoodService.class);
 
+    private AsyncCallback<List<Category>> callback;
+
     public FormPanel getAddProductForm() {
 
         //category select
         final ListBox list = new ListBox();
 
-        AsyncCallback<List<Category>> callback = new AsyncCallback<List<Category>>() {
+        callback = new AsyncCallback<List<Category>>() {
 
             @Override
             public void onFailure(Throwable caught) {
@@ -33,6 +35,9 @@ public class AddProductForm {
 
             @Override
             public void onSuccess(List<Category> categories) {
+                for (int i = 0; i < list.getItemCount(); i++) {
+                    list.removeItem(i);
+                }
                 for (Category category : categories) {
                     list.addItem(category.getName(), String.valueOf(category.getId()));
                 }
@@ -122,5 +127,9 @@ public class AddProductForm {
 
         form.add(panel);
         return form;
+    }
+
+    public void refresCategories() {
+        goodServiceAsyncService.getAllCategories(callback);
     }
 }

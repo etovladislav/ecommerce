@@ -3,6 +3,7 @@ package ru.kpfu.shop.client.service;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import ru.kpfu.shop.model.Category;
+import ru.kpfu.shop.model.Product;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ import java.util.List;
 public interface GoodService extends RemoteService {
 
     List<Category> getAllCategories();
+
+    Product getProduct(Long id);
 
 }

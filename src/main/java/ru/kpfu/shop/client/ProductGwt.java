@@ -1,6 +1,8 @@
 package ru.kpfu.shop.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.logical.shared.BeforeSelectionEvent;
+import com.google.gwt.event.logical.shared.BeforeSelectionHandler;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabPanel;
@@ -25,9 +27,11 @@ public class ProductGwt implements EntryPoint {
         String tab3Title = "Изменить товар";
 
         //create tabs
-        tabPanel.add(new AddProductForm().getAddProductForm(), tab1Title);
-        tabPanel.add(new CreateCategoryForm().getCreateCategoryForm(), tab2Title);
-        tabPanel.add(label3, tab3Title);
+        final AddProductForm addProductForm = new AddProductForm();
+        final CreateCategoryForm createCategoryForm = new CreateCategoryForm();
+        tabPanel.add(addProductForm.getAddProductForm(), tab1Title);
+        tabPanel.add(createCategoryForm.getCreateCategoryForm(), tab2Title);
+        tabPanel.add(new EditProductForm().getEditProductForm(), tab3Title);
 
         //select first tab
         tabPanel.selectTab(0);
@@ -36,6 +40,14 @@ public class ProductGwt implements EntryPoint {
         tabPanel.setWidth("800");
 
         tabPanel.setAnimationEnabled(true);
+        tabPanel.addBeforeSelectionHandler(new BeforeSelectionHandler<Integer>() {
+            @Override
+            public void onBeforeSelection(BeforeSelectionEvent<Integer> beforeSelectionEvent) {
+                if (beforeSelectionEvent.getItem() == 1) {
+                    addProductForm.refresCategories();
+                }
+            }
+        });
         // Add the widgets to the root panel.
         RootPanel.get().add(tabPanel);
 

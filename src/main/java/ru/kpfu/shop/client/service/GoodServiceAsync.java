@@ -2,6 +2,7 @@ package ru.kpfu.shop.client.service;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import ru.kpfu.shop.model.Category;
+import ru.kpfu.shop.model.Product;
 
 import java.util.List;
 
@@ -11,5 +12,7 @@ import java.util.List;
 public interface GoodServiceAsync {
 
     void getAllCategories(AsyncCallback<List<Category>> asyncCallback);
+
+    void getProduct(Long id, AsyncCallback<Product> productAsyncCallback);
 
 }
