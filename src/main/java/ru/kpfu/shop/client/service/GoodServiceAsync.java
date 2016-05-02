@@ -15,4 +15,5 @@ public interface GoodServiceAsync {
 
     void getProduct(Long id, AsyncCallback<Product> productAsyncCallback);
 
+    void getProducts(AsyncCallback<List<Product>> asyncCallback);
 }

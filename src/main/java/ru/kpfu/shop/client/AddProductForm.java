@@ -56,7 +56,8 @@ public class AddProductForm {
 
         //Product Name input
         Label productNameLabel = new Label("Название продукта");
-        final TextBox nameForm = new TextBox();
+        final TextBox nameForm;
+        nameForm = new TextBox();
         nameForm.getElement().setAttribute("type", "text");
         nameForm.setName("name");
         panel.add(productNameLabel);

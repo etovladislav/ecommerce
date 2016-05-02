@@ -17,4 +17,6 @@ public interface GoodService extends RemoteService {
 
     Product getProduct(Long id);
 
+    List<Product> getProducts();
+
 }

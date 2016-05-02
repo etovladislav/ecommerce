@@ -40,6 +40,15 @@
         .gwt-Label {
             font-weight: bolder;
         }
+
+        .gwt-ListBox {
+            font-size: 18px;
+        }
+
+        .gwt-ListBox option {
+            padding: 3px;
+            border-bottom: 1px solid black;
+        }
     </style>
     <script type="text/javascript" language="javascript" src="../resources.hellogwt/resources.hellogwt.nocache.js"></script>
 </head>

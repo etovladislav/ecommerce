@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import ru.kpfu.shop.annotation.TimeLog;
 import ru.kpfu.shop.form.ProductForm;
+import ru.kpfu.shop.form.ProductFormUpdate;
 import ru.kpfu.shop.model.Category;
 import ru.kpfu.shop.model.Product;
 import ru.kpfu.shop.repository.CategoryRepository;
@@ -31,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * Сохранение продукта
+     *
      * @param productForm
      */
     @TimeLog
@@ -73,6 +75,7 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * Поиск продуктов по категории
+     *
      * @param categoryId
      * @return
      */
@@ -82,5 +85,45 @@ public class ProductServiceImpl implements ProductService {
         Category category = categoryRepository.findOne(categoryId);
         return productRepository.findByCategory(category);
 
+    }
+
+    @Override
+    @Transactional
+    public void updateProduct(ProductFormUpdate productForm) {
+        Product product = productRepository.findOne(productForm.getId());
+        product.setCategory(categoryRepository.findOne(productForm.getCategoryId()));
+        product.setDescription(productForm.getDescription());
+        product.setPrice(productForm.getPrice());
+
+        String newFileName = null;
+        if (productForm.getImg() != null) {
+            MultipartFile file = productForm.getImg();
+            File dir = null;
+            //Загрузка картинки
+            if (!file.isEmpty()) {
+                try {
+                    byte[] bytes = file.getBytes();
+                    dir = new File(PropertyPath.getPath() + File.separator + "product_images");
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+                    //генерируем имя картинке
+                    newFileName = UUID.randomUUID().toString() + "."
+                            + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+                    File serverFile = new File(dir.getAbsolutePath()
+                            + File.separator + newFileName);
+                    //сохраняем картинку
+                    try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
+                        stream.write(bytes);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            product.setImg("/images/product_images/" + newFileName);
+        }
+
+        product.setName(productForm.getName());
+        productRepository.save(product);
     }
 }

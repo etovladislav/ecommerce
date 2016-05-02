@@ -31,7 +31,7 @@ public class ProductGwt implements EntryPoint {
         final CreateCategoryForm createCategoryForm = new CreateCategoryForm();
         tabPanel.add(addProductForm.getAddProductForm(), tab1Title);
         tabPanel.add(createCategoryForm.getCreateCategoryForm(), tab2Title);
-        tabPanel.add(new EditProductForm().getEditProductForm(), tab3Title);
+        tabPanel.add(new ProductList().getAddProductForm(), tab3Title);
 
         //select first tab
         tabPanel.selectTab(0);

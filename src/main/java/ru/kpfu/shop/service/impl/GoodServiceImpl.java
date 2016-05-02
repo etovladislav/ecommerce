@@ -31,4 +31,9 @@ public class GoodServiceImpl implements GoodService {
     public Product getProduct(Long id) {
         return productRepository.findOne(id);
     }
+
+    @Override
+    public List<Product> getProducts() {
+        return productRepository.findAll();
+    }
 }

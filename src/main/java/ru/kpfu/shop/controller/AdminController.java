@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.shop.form.ProductForm;
+import ru.kpfu.shop.form.ProductFormUpdate;
 import ru.kpfu.shop.model.Category;
 import ru.kpfu.shop.model.Order;
 import ru.kpfu.shop.model.ShippingInfo;
@@ -72,6 +73,10 @@ public class AdminController {
         return "redirect:/admin/add-product";
     }
 
+    @RequestMapping(value = "/update-product", method = RequestMethod.POST)
+    public void updateProduct(@ModelAttribute ProductFormUpdate productFormUpdate) {
+        productService.updateProduct(productFormUpdate);
+    }
     /**
      * Страница добавления категории
      *
