@@ -1,6 +1,9 @@
 package ru.kpfu.shop.model;
 
+import ru.kpfu.shop.model.enums.OrderStatus;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -10,9 +13,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Product> product;
 
     private Integer numberProduct;
 
@@ -20,9 +22,13 @@ public class Order {
     @JoinColumn(name = "user_id")
     User user;
 
+    String orderId;
+
+    @Enumerated(value = EnumType.STRING)
+    OrderStatus orderStatus;
+
     public Order() {
     }
-
 
     public Long getId() {
         return id;
@@ -32,11 +38,11 @@ public class Order {
         this.id = id;
     }
 
-    public Product getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 
@@ -54,5 +60,21 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

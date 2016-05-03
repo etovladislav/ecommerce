@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.shop.model.Bucket;
 import ru.kpfu.shop.model.ShippingInfo;
 import ru.kpfu.shop.repository.BucketRepository;
@@ -99,8 +96,21 @@ public class BucketController {
     }
 
     @RequestMapping(value = "/buyProducts", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
     public void buyProducts() {
         orderService.buyProducts();
+    }
+
+    @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
+    public String getOrderDetail(@PathVariable("id") String id, Model model) {
+        model.addAttribute("order", orderService.getOrderDetail(id));
+        return "order-detail";
+    }
+
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
+    public String getUserOrders(Model model) {
+        model.addAttribute("orders", orderService.getUserOrders(SecurityUtils.getCurrentUser().getId()));
+        return "user-orders";
     }
 
 

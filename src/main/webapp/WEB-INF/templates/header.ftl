@@ -31,6 +31,9 @@
                     <a href="/settings">Настройки</a>
                 </li>
                 <li>
+                    <a href="/bucket/orders">Мои заказы</a>
+                </li>
+                <li>
                     <a href="/logout">Выйти</a>
                 </li>
                 <#if role == 'ROLE_ADMIN'>

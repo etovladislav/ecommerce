@@ -162,6 +162,7 @@ public class ProductList extends DialogBox {
 
         final VerticalPanel panel = new VerticalPanel();
 
+        Label label = new Label("Выберете товар для изменения");
 
         callbackProduct = new AsyncCallback<List<Product>>() {
             @Override

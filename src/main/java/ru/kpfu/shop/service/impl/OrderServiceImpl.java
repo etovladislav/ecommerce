@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.shop.annotation.TimeLog;
 import ru.kpfu.shop.model.Bucket;
 import ru.kpfu.shop.model.Order;
+import ru.kpfu.shop.model.Product;
 import ru.kpfu.shop.model.User;
+import ru.kpfu.shop.model.enums.OrderStatus;
 import ru.kpfu.shop.repository.BucketRepository;
 import ru.kpfu.shop.repository.OrderRepository;
 import ru.kpfu.shop.repository.UserRepository;
@@ -16,6 +18,8 @@ import ru.kpfu.shop.util.SecurityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -34,18 +38,35 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public void buyProducts() {
         List<Bucket> bucketList = bucketRepository.findAllByUser(SecurityUtils.getCurrentUser());
-        List<Order> orderList = new ArrayList<>();
         User user = userRepository.findOne(SecurityUtils.getCurrentUser().getId());
-        for (Bucket bucket : bucketList) {
-            Order order = new Order();
-            order.setUser(user);
-            order.setNumberProduct(bucket.getNumberProduct());
-            order.setProduct(bucket.getProduct());
-            orderList.add(order);
-        }
-        List<Order> order = orderRepository.save(orderList);
+        List<Product> products = new ArrayList<>();
+        Order order = new Order();
+        order.setOrderStatus(OrderStatus.ОБРАБАТЫВАЕТСЯ);
+        order.setOrderId(UUID.randomUUID().toString());
+        order.setUser(user);
+        order.setNumberProduct(bucketList.size());
+        products.addAll(bucketList.stream().map(Bucket::getProduct).collect(Collectors.toList()));
+        order.setProduct(products);
+        orderRepository.save(order);
         if (order != null) {
             bucketRepository.delete(bucketList);
         }
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return null;
+    }
+
+    @Override
+    public Order getOrderDetail(String orderId) {
+        return orderRepository.findOneByOrderId(orderId);
+    }
+
+
+    @Override
+    public List<Order> getUserOrders(Long userId) {
+        return orderRepository.findAllByUserId(userId);
+
     }
 }
