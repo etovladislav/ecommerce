@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
+
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -41,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     public void saveProduct(ProductForm productForm) {
         Product product = new Product();
         product.setCategory(categoryRepository.findOne(productForm.getCategoryId()));
-        product.setDescription(productForm.getDescription());
+        product.setDescription(htmlEscape(productForm.getDescription()));
         product.setPrice(productForm.getPrice());
         String newFileName = null;
         MultipartFile file = productForm.getImg();
@@ -68,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
             }
         }
         product.setImg("/images/product_images/" + newFileName);
-        product.setName(productForm.getName());
+        product.setName(htmlEscape(productForm.getName()));
         productRepository.save(product);
     }
 
@@ -92,7 +94,7 @@ public class ProductServiceImpl implements ProductService {
     public void updateProduct(ProductFormUpdate productForm) {
         Product product = productRepository.findOne(productForm.getId());
         product.setCategory(categoryRepository.findOne(productForm.getCategoryId()));
-        product.setDescription(productForm.getDescription());
+        product.setDescription(htmlEscape(productForm.getDescription()));
         product.setPrice(productForm.getPrice());
 
         String newFileName = null;
@@ -123,7 +125,7 @@ public class ProductServiceImpl implements ProductService {
             product.setImg("/images/product_images/" + newFileName);
         }
 
-        product.setName(productForm.getName());
+        product.setName(htmlEscape(productForm.getName()));
         productRepository.save(product);
     }
 }

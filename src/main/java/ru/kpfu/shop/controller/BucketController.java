@@ -102,7 +102,7 @@ public class BucketController {
     }
 
     @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
-    public String getOrderDetail(@PathVariable("id") String id, Model model) {
+    public String getOrderDetail(@PathVariable("id") Long id, Model model) {
         model.addAttribute("order", orderService.getOrderDetail(id));
         return "order-detail";
     }

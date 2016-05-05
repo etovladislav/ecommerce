@@ -12,6 +12,8 @@ import ru.kpfu.shop.repository.ShippingRepository;
 import ru.kpfu.shop.repository.UserRepository;
 import ru.kpfu.shop.util.SecurityUtils;
 
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
+
 @Controller
 public class MainController {
 
@@ -49,6 +51,13 @@ public class MainController {
     @RequestMapping(value = "/shipping", method = RequestMethod.POST)
     public String saveShippingInfo(@ModelAttribute ShippingInfo shippingInfo, Model model) {
         User user = userRepository.findOne(SecurityUtils.getCurrentUser().getId());
+        shippingInfo.setCity(htmlEscape(shippingInfo.getCity()));
+        shippingInfo.setCountry(htmlEscape(shippingInfo.getCity()));
+        shippingInfo.setEmail(htmlEscape(shippingInfo.getEmail()));
+        shippingInfo.setFio(htmlEscape(shippingInfo.getFio()));
+        shippingInfo.setHouse(htmlEscape(shippingInfo.getHouse()));
+        shippingInfo.setPhone(htmlEscape(shippingInfo.getPhone()));
+        shippingInfo.setStreet(htmlEscape(shippingInfo.getStreet()));
         user.setShippingInfo(shippingRepository.save(shippingInfo));
         userRepository.save(user);
         return "redirect:/products";

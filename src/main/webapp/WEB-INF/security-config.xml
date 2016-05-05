@@ -25,6 +25,7 @@
         <security:csrf disabled="true"/>
         <security:headers>
             <security:frame-options policy="SAMEORIGIN"/>
+            <security:xss-protection enabled="true"/>
         </security:headers>
     </security:http>
 

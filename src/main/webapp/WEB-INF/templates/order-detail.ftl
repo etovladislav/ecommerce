@@ -13,8 +13,8 @@
             </h3>
         </div>
         <div class="panel-body">
-            <#list order.product as product>
-                <a href="/products/detail?id=${order.id}">Название продукта: ${product.name}</a>
+            <#list order.orderDetail as order>
+                <a href="/products/detail?id=${order.product.id}">Название продукта: ${order.product.name}</a>
                 <hr>
             </#list>
         </div>

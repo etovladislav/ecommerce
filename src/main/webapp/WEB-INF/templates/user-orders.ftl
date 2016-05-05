@@ -10,7 +10,7 @@
         <#list orders as order>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="/bucket/order/${order.orderId}">Заказ # ${order.id}</a><br>
+                    <a href="/bucket/order/${order.id}">Заказ # ${order.id}</a><br>
                     <p>Статус ${order.orderStatus}</p>
                 </div>
             </div>

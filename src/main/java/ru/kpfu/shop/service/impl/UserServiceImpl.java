@@ -9,6 +9,8 @@ import ru.kpfu.shop.model.enums.UserRole;
 import ru.kpfu.shop.repository.UserRepository;
 import ru.kpfu.shop.service.UserService;
 
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registrateUser(UserForm userForm) {
         User user = new User();
-        user.setLogin(userForm.getLogin());
+        user.setLogin(htmlEscape(userForm.getLogin()));
         user.setPassword(encoder.encode(userForm.getPassword()));
         user.setRole(UserRole.ROLE_USER);
         userRepository.save(user);

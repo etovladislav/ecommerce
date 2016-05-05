@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.HtmlUtils;
 import ru.kpfu.shop.form.ProductForm;
 import ru.kpfu.shop.form.ProductFormUpdate;
 import ru.kpfu.shop.model.Category;
@@ -98,7 +99,7 @@ public class AdminController {
     @RequestMapping(value = "/add-category", method = RequestMethod.POST)
     public String saveCategory(@RequestParam String name, Model model) {
         Category category = new Category();
-        category.setName(name);
+        category.setName(HtmlUtils.htmlEscape(name));
         categoryRepository.save(category);
         return "add-category";
     }

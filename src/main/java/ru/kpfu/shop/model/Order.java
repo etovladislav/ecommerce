@@ -13,45 +13,16 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Product> product;
-
-    private Integer numberProduct;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    User user;
-
-    String orderId;
-
     @Enumerated(value = EnumType.STRING)
     OrderStatus orderStatus;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+    List<OrderDetail> orderDetail;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    User user;
+
     public Order() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<Product> getProduct() {
-        return product;
-    }
-
-    public void setProduct(List<Product> product) {
-        this.product = product;
-    }
-
-    public Integer getNumberProduct() {
-        return numberProduct;
-    }
-
-    public void setNumberProduct(Integer numberProduct) {
-        this.numberProduct = numberProduct;
     }
 
     public User getUser() {
@@ -62,12 +33,12 @@ public class Order {
         this.user = user;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public OrderStatus getOrderStatus() {
@@ -76,5 +47,13 @@ public class Order {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public List<OrderDetail> getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(List<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
     }
 }
