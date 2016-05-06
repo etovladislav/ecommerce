@@ -7,8 +7,10 @@
         <h2 class="form-signin-heading">Регистрация</h2>
         <input type="login" class="form-control" name="login" id="login" placeholder="Логин" required autofocus>
         <span class="error" id="loginExists">Логин занят</span>
-        <input type="password" name="password" id="password" class="form-control" placeholder="Пароль" required>
-        <input type="password" name="confirmPassword" id="confirm-password" class="form-control" placeholder="Пароль" required>
+        <input type="password" name="password" id="password" style="margin-top: 5px;" class="form-control"
+               placeholder="Пароль" required>
+        <input type="password" name="confirmPassword" id="confirm-password" class="form-control" placeholder="Пароль"
+               style="margin-top: 5px;" required>
         <span class="error" id="passwordNotEqual">Пароли не совпадают</span>
         <button class="btn btn-lg btn-primary btn-block">Регистрация</button>
     </form>
