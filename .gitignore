@@ -68,5 +68,3 @@ crashlytics-build.properties
 fabric.properties
 
 # Created by .ignore support plugin (hsz.mobi)
-/src/main/webapp/resources
-/src/main/webapp/WEB-INF
