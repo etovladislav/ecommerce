@@ -22,4 +22,6 @@ public interface GoodService extends RemoteService {
 
     List<OrderDTO> getOrders();
 
+    void sendOrder(Long id);
+
 }

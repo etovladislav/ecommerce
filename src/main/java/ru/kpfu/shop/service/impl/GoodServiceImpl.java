@@ -57,4 +57,11 @@ public class GoodServiceImpl implements GoodService {
         }
         return orderDTOs;
     }
+
+    @Override
+    public void sendOrder(Long id) {
+        Order order = orderRepository.findOne(id);
+        order.setOrderStatus(OrderStatus.ОТПРАВЛЕН);
+        orderRepository.save(order);
+    }
 }

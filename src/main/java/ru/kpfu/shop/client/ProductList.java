@@ -129,7 +129,6 @@ public class ProductList extends DialogBox {
             public void onClick(ClickEvent event) {
                 String filename = fileUpload.getFilename();
                 if (false == true) {
-
                     status.getElement().setClassName("error");
                 } else {
                     form.submit();

@@ -1,6 +1,8 @@
 package ru.kpfu.shop.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -29,9 +31,16 @@ public class OrderList extends DialogBox {
 
     private AsyncCallback<List<OrderDTO>> orders;
 
-    public FormPanel getEditProductForm(OrderDTO order, final MyDialog widgets) {
+    private AsyncCallback<Void> asyncCallback;
+
+    public FormPanel getEditProductForm(final OrderDTO order, final MyDialog widgets) {
         VerticalPanel panel = new VerticalPanel();
         final FormPanel form = new FormPanel();
+        final TextBox textBox = new TextBox();
+        textBox.setName("id");
+        textBox.setValue(order.getId().toString());
+        textBox.setVisible(false);
+        panel.add(textBox);
         ShippingInfo shippingInfo = order.getUser().getShippingInfo();
         final Label status = new Label("Пользователь: " + shippingInfo.getFio());
         final Label shippInf = new Label("Информация о доставке: ");
@@ -48,6 +57,33 @@ public class OrderList extends DialogBox {
             lb.addItem(orderDetail.getProduct().getName() + ", Количество: " + orderDetail.getNumber());
         }
         panel.add(lb);
+        Button send = new Button("Отправить");
+        asyncCallback = new AsyncCallback<Void>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                Window.alert("Ошибка, попробуйте еще раз.");
+            }
+
+            @Override
+            public void onSuccess(Void aVoid) {
+                widgets.hide();
+            }
+        };
+        send.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                goodServiceAsyncService.sendOrder(order.getId(), asyncCallback);
+            }
+        });
+        Button cancel = new Button("Отменить");
+        cancel.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                widgets.hide();
+            }
+        });
+        panel.add(send);
+        panel.add(cancel);
         form.add(panel);
         return form;
     }

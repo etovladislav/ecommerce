@@ -19,4 +19,6 @@ public interface GoodServiceAsync {
     void getProducts(AsyncCallback<List<Product>> asyncCallback);
 
     void getOrders(AsyncCallback<List<OrderDTO>> asyncCallback);
+
+    void sendOrder(Long id, AsyncCallback<Void> asyncCallback);
 }
