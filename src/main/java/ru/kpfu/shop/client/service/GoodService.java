@@ -2,6 +2,7 @@ package ru.kpfu.shop.client.service;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import ru.kpfu.shop.dto.OrderDTO;
 import ru.kpfu.shop.model.Category;
 import ru.kpfu.shop.model.Product;
 
@@ -18,5 +19,7 @@ public interface GoodService extends RemoteService {
     Product getProduct(Long id);
 
     List<Product> getProducts();
+
+    List<OrderDTO> getOrders();
 
 }

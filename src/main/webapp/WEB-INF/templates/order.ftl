@@ -35,7 +35,7 @@
                             src="https://money.yandex.ru/embed/small.xml?account=410011953904806&quickpay=small&yamoney-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=%D0%9E%D0%BF%D0%BB%D0%B0%D1%82%D0%B0+%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B8&default-sum=${sum?c}&fio=on&mail=on&successURL=localhost%3A8181%2F"
                             width="196" height="54"></iframe>
                     <form action="/bucket/buyProducts" method="post">
-                        <button type="submit">КУПИТь ЕПТА</button>
+                        <button type="button" class="btn btn-success" onclick="buyProducts()">КУПИТь ЕПТА</button>
                     </form>
                 <#else>
                     <a href="/settings">Пожалуйста заполните информацию по доставке</a>

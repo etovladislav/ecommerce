@@ -3,12 +3,12 @@ package ru.kpfu.shop.model;
 import ru.kpfu.shop.model.enums.UserRole;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

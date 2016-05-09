@@ -25,13 +25,18 @@ public class ProductGwt implements EntryPoint {
         String tab1Title = "Добавить товар";
         String tab2Title = "Добавить категорию";
         String tab3Title = "Изменить товар";
-
+        String tab4Title = "Список заказов";
+        String tab5Title = "Перейти на сайт";
+        String tab6Title = "Выход";
         //create tabs
         final AddProductForm addProductForm = new AddProductForm();
         final CreateCategoryForm createCategoryForm = new CreateCategoryForm();
         tabPanel.add(addProductForm.getAddProductForm(), tab1Title);
         tabPanel.add(createCategoryForm.getCreateCategoryForm(), tab2Title);
         tabPanel.add(new ProductList().getAddProductForm(), tab3Title);
+        tabPanel.add(new OrderList().getAddProductForm(), tab4Title);
+        tabPanel.add(createCategoryForm.getCreateCategoryForm(), tab5Title);
+        tabPanel.add(createCategoryForm.getCreateCategoryForm(), tab6Title);
 
         //select first tab
         tabPanel.selectTab(0);

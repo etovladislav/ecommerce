@@ -3,11 +3,12 @@ package ru.kpfu.shop.model;
 import ru.kpfu.shop.model.enums.OrderStatus;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +17,7 @@ public class Order {
     @Enumerated(value = EnumType.STRING)
     OrderStatus orderStatus;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "order")
     List<OrderDetail> orderDetail;
 
     @OneToOne(cascade = CascadeType.ALL)

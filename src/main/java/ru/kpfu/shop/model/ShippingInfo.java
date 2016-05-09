@@ -1,10 +1,11 @@
 package ru.kpfu.shop.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "shipping_info")
-public class ShippingInfo {
+public class ShippingInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

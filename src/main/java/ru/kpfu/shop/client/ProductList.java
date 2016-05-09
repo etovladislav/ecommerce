@@ -32,7 +32,6 @@ public class ProductList extends DialogBox {
         final ListBox list = new ListBox();
 
         callback = new AsyncCallback<List<Category>>() {
-
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Error");
@@ -47,8 +46,8 @@ public class ProductList extends DialogBox {
                     list.addItem(category.getName(), String.valueOf(category.getId()));
                 }
             }
-
         };
+
         goodServiceAsyncService.getAllCategories(callback);
         VerticalPanel panel = new VerticalPanel();
         final FormPanel form = new FormPanel();

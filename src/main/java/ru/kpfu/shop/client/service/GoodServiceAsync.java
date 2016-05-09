@@ -1,6 +1,7 @@
 package ru.kpfu.shop.client.service;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import ru.kpfu.shop.dto.OrderDTO;
 import ru.kpfu.shop.model.Category;
 import ru.kpfu.shop.model.Product;
 
@@ -16,4 +17,6 @@ public interface GoodServiceAsync {
     void getProduct(Long id, AsyncCallback<Product> productAsyncCallback);
 
     void getProducts(AsyncCallback<List<Product>> asyncCallback);
+
+    void getOrders(AsyncCallback<List<OrderDTO>> asyncCallback);
 }

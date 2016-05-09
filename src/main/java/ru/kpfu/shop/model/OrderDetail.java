@@ -1,13 +1,15 @@
 package ru.kpfu.shop.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by etovladislav on 05.05.16.
  */
 @Entity
 @Table(name = "order_detail")
-public class OrderDetail {
+public class OrderDetail implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
