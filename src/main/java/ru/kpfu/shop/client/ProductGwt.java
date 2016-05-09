@@ -3,6 +3,7 @@ package ru.kpfu.shop.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.BeforeSelectionEvent;
 import com.google.gwt.event.logical.shared.BeforeSelectionHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabPanel;
@@ -51,11 +52,15 @@ public class ProductGwt implements EntryPoint {
                 if (beforeSelectionEvent.getItem() == 1) {
                     addProductForm.refresCategories();
                 }
+                if (beforeSelectionEvent.getItem() == 5) {
+                    Window.Location.replace("localhost:8181/products");
+                }
+                if (beforeSelectionEvent.getItem() == 6) {
+                    Window.Location.replace("localhost:8181/logout");
+                }
             }
         });
         // Add the widgets to the root panel.
         RootPanel.get().add(tabPanel);
-
-
     }
 }
