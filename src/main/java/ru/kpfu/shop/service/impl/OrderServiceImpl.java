@@ -1,6 +1,7 @@
 package ru.kpfu.shop.service.impl;
 
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderDetailRepository orderDetailRepository;
 
+    final static Logger logger = Logger.getLogger(OrderServiceImpl.class);
+
     @TimeLog
     @Override
     @Transactional
@@ -59,6 +62,7 @@ public class OrderServiceImpl implements OrderService {
         }
         if (order != null) {
             bucketRepository.delete(bucketList);
+            logger.info("Пользователь " + order.getUser().getLogin() + " сделал заказ, номер заказа: " + order.getId());
         }
     }
 
