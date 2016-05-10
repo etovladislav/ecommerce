@@ -1,6 +1,7 @@
 package ru.kpfu.shop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -75,6 +76,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/update-product", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
     public void updateProduct(@ModelAttribute ProductFormUpdate productFormUpdate) {
         productService.updateProduct(productFormUpdate);
     }
