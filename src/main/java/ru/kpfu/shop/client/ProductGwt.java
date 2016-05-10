@@ -53,10 +53,10 @@ public class ProductGwt implements EntryPoint {
                     addProductForm.refresCategories();
                 }
                 if (beforeSelectionEvent.getItem() == 5) {
-                    Window.Location.replace("localhost:8181/products");
+                    Window.Location.replace("localhost:8181/products");//TODO: не работает
                 }
                 if (beforeSelectionEvent.getItem() == 6) {
-                    Window.Location.replace("localhost:8181/logout");
+                    Window.Location.replace("localhost:8181/logout");//TODO: не работает
                 }
             }
         });
