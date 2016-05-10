@@ -50,6 +50,8 @@ hs_err_pid*
 ## File-based project format:
 *.iws
 
+*.properties
+
 ## Plugin-specific files:
 
 # IntelliJ
