@@ -1,5 +1,6 @@
 package ru.kpfu.shop.service.impl;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,9 @@ import static org.springframework.web.util.HtmlUtils.htmlEscape;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
+    final static Logger logger = Logger.getLogger(ProductServiceImpl.class);
+
     @Autowired
     CategoryRepository categoryRepository;
 
@@ -72,6 +76,7 @@ public class ProductServiceImpl implements ProductService {
         product.setImg("/images/product_images/" + newFileName);
         product.setName(htmlEscape(productForm.getName()));
         productRepository.save(product);
+        logger.info("добавлен новый товар " + product.getId());
     }
 
 

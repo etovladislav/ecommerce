@@ -1,5 +1,6 @@
 package ru.kpfu.shop.service.impl;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,8 @@ public class GoodServiceImpl implements GoodService {
 
     @Autowired
     OrderRepository orderRepository;
+
+    final static Logger logger = Logger.getLogger(GoodServiceImpl.class);
 
     @Override
     public List<Category> getAllCategories() {
@@ -63,5 +66,6 @@ public class GoodServiceImpl implements GoodService {
         Order order = orderRepository.findOne(id);
         order.setOrderStatus(OrderStatus.ОТПРАВЛЕН);
         orderRepository.save(order);
+        logger.info("Отправлен заказ # " + order.getId());
     }
 }
