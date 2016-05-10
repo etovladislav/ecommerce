@@ -12,7 +12,7 @@
         <input type="password" name="confirmPassword" id="confirm-password" class="form-control" placeholder="Пароль"
                style="margin-top: 5px;" required>
         <span class="error" id="passwordNotEqual">Пароли не совпадают</span>
-        <button class="btn btn-lg btn-primary btn-block">Регистрация</button>
+        <button class="btn btn-lg btn-primary btn-block" id="registrate" type="button">Регистрация</button>
     </form>
 </div> <!-- /container -->
 

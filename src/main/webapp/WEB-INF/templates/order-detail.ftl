@@ -1,9 +1,9 @@
 <#include "main-template.ftl"/>
 <#macro m_body>
-<div class="container">
-    <h5>
-
-    </h5>
+<div class="container background">
+    <h2>
+        Детали заказа
+    </h2>
     <hr>
     <div class="panel panel-default">
         <div class="panel-heading">

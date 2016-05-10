@@ -1,12 +1,12 @@
 /**
  * Created by etovladislav on 06.04.16.
  */
-$("#registration-form").submit(function(){
+$("#registrate").on('click', function () {
     var $login = $("#login");
     var $password = $("#password").val();
     var $confirmPassword = $("#confirm-password").val();
     var passwordEq = true;
-    if($password != $confirmPassword) {
+    if ($password != $confirmPassword) {
         $("#passwordNotEqual").css("display", "block");
         passwordEq = false;
     }
@@ -21,18 +21,18 @@ $("#registration-form").submit(function(){
             login: login
         },
         success: function (data) {
-            if(data == "true"){
-                $('#loginExists').css("display","block");
+            if (data == "true") {
+                $('#loginExists').css("display", "block");
                 return false;
-            }else {
-                $('#loginExists').css("display","none");
+            } else {
+                $('#loginExists').css("display", "none");
             }
-            if(!passwordEq){
+            if (!passwordEq) {
                 return false;
-            }else{
+            } else {
                 $("#passwordNotEqual").css("display", "none");
             }
-            return true;
+            $('#registration-form').submit();
         }
     })
 

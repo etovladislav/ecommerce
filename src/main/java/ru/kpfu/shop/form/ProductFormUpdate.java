@@ -2,6 +2,8 @@ package ru.kpfu.shop.form;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -9,16 +11,22 @@ import java.io.Serializable;
  */
 public class ProductFormUpdate implements Serializable {
 
+    @NotNull
     private Long id;
 
+    @Size(min = 1, max = 500)
     private String description;
 
+    @NotNull
     private MultipartFile img;
 
+    @NotNull
     private Integer price;
 
+    @Size(min = 1, max = 500)
     private String name;
 
+    @NotNull
     private Long categoryId;
 
     public Long getId() {

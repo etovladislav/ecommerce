@@ -11,12 +11,12 @@
                     <h2 class="form-signin-heading">Информация о доставке</h2>
                     <input type="hidden" name="id"><br>
                     <input type="text"  class="form-control" name="fio" placeholder="ФИО" required autofocus><br>
-                    <input type="email" class="form-control" name="email" placeholder="email"><br>
-                    <input type="text" class="form-control" name="phone" placeholder="Номер телефона"><br>
-                    <input type="text" class="form-control" name="country" placeholder="Страна" ><br>
-                    <input type="text" class="form-control" name="city" placeholder="Город"><br>
-                    <input type="text" class="form-control" name="street" placeholder="Улица"><br>
-                    <input type="text" class="form-control" name="house" placeholder="Дом"><br>
+                    <input type="email" class="form-control" name="email" placeholder="email" required><br>
+                    <input type="text" class="form-control" name="phone" placeholder="Номер телефона" required><br>
+                    <input type="text" class="form-control" name="country" placeholder="Страна" required><br>
+                    <input type="text" class="form-control" name="city" placeholder="Город" required><br>
+                    <input type="text" class="form-control" name="street" placeholder="Улица" required><br>
+                    <input type="text" class="form-control" name="house" placeholder="Дом" required><br>
                     <button class="btn btn-lg btn-primary btn-block">Ок</button>
                 </form>
             </div>

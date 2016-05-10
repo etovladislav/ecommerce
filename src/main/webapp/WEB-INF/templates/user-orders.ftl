@@ -1,11 +1,10 @@
 <#include "main-template.ftl"/>
 <#macro m_body>
-<div class="container">
+<div class="container background">
     <h3>
         Мои заказы
     </h3>
     <hr>
-
     <#if orders?has_content>
         <#list orders as order>
             <div class="panel panel-default">
