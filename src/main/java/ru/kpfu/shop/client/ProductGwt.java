@@ -52,11 +52,11 @@ public class ProductGwt implements EntryPoint {
                 if (beforeSelectionEvent.getItem() == 1) {
                     addProductForm.refresCategories();
                 }
-                if (beforeSelectionEvent.getItem() == 5) {
-                    Window.Location.replace("localhost:8181/products");//TODO: не работает
+                if (beforeSelectionEvent.getItem() == 4) {
+                    Window.Location.replace("http://localhost:8181/products");//TODO: не работает
                 }
-                if (beforeSelectionEvent.getItem() == 6) {
-                    Window.Location.replace("localhost:8181/logout");//TODO: не работает
+                if (beforeSelectionEvent.getItem() == 5) {
+                    Window.Location.replace("http://localhost:8181/logout");//TODO: не работает
                 }
             }
         });
