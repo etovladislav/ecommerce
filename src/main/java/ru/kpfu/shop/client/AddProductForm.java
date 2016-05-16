@@ -1,8 +1,12 @@
 package ru.kpfu.shop.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -10,7 +14,10 @@ import ru.kpfu.shop.client.service.GoodService;
 import ru.kpfu.shop.client.service.GoodServiceAsync;
 import ru.kpfu.shop.model.Category;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by etovladislav on 17.04.16.
@@ -21,6 +28,10 @@ public class AddProductForm {
 
     private AsyncCallback<List<Category>> callback;
 
+    private static final String IMAGE_PATTERN
+            = "/\\.(gif|jpg|JPEG|tiff|png)$/i";
+
+    private static Logger rootLogger = Logger.getLogger("");
     public FormPanel getAddProductForm() {
 
         //category select
@@ -94,6 +105,7 @@ public class AddProductForm {
         Label fileUploadLabel = new Label("Выберете картинку:");
         final FileUpload fileUpload = new FileUpload();
         fileUpload.setName("img");
+        fileUpload.getElement().setAttribute("accept",".png, .jpg, .jpeg");
         panel.add(fileUploadLabel);
         panel.add(fileUpload);
         //end FileUpload input
@@ -105,7 +117,8 @@ public class AddProductForm {
             @Override
             public void onClick(ClickEvent event) {
                 String filename = fileUpload.getFilename();
-                if (filename.length() == 0) {
+                if (filename.length() == 0 || descriptionForm.getValue().length() == 0 || priceProductForm.getValue().length() == 0 ||
+                        nameForm.getValue().length() == 0) {
                     status.setText("Заполните все поля!");
                     status.getElement().setClassName("error");
                 } else {
@@ -123,6 +136,7 @@ public class AddProductForm {
                 descriptionForm.setValue("");
                 nameForm.setValue("");
             }
+
         });
         panel.setSpacing(10);
 

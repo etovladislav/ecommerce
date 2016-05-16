@@ -4,6 +4,7 @@
 <module rename-to='resources.hellogwt'>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <inherits name="com.google.gwt.logging.Logging"/>
     <entry-point class='ru.kpfu.shop.client.ProductGwt'/>
     <source path='client'/>
     <source path='client/service'/>

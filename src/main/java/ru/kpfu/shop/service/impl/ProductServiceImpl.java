@@ -13,6 +13,7 @@ import ru.kpfu.shop.model.Product;
 import ru.kpfu.shop.repository.CategoryRepository;
 import ru.kpfu.shop.repository.ProductRepository;
 import ru.kpfu.shop.service.ProductService;
+import ru.kpfu.shop.util.ImageFilenameValidator;
 import ru.kpfu.shop.util.PropertyPath;
 
 import java.io.BufferedOutputStream;
@@ -46,6 +47,10 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void saveProduct(ProductForm productForm) {
         Product product = new Product();
+        ImageFilenameValidator imageFilenameValidator = new ImageFilenameValidator();
+        if (!imageFilenameValidator.validate(productForm.getImg().getOriginalFilename().replace(" ",""))) {
+            throw new IllegalArgumentException("Неверное расширение файла");
+        }
         product.setCategory(categoryRepository.findOne(productForm.getCategoryId()));
         product.setDescription(htmlEscape(productForm.getDescription()));
         product.setPrice(productForm.getPrice());
@@ -101,7 +106,10 @@ public class ProductServiceImpl implements ProductService {
         product.setCategory(categoryRepository.findOne(productForm.getCategoryId()));
         product.setDescription(htmlEscape(productForm.getDescription()));
         product.setPrice(productForm.getPrice());
-
+        ImageFilenameValidator imageFilenameValidator = new ImageFilenameValidator();
+        if (!imageFilenameValidator.validate(productForm.getImg().getOriginalFilename().replace(" ",""))) {
+            throw new IllegalArgumentException("Неверное расширение файла");
+        }
         String newFileName = null;
         if (productForm.getImg() != null) {
             MultipartFile file = productForm.getImg();
