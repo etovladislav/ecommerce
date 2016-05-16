@@ -119,6 +119,7 @@ public class AddProductForm {
                 String filename = fileUpload.getFilename();
                 if (filename.length() == 0 || descriptionForm.getValue().length() == 0 || priceProductForm.getValue().length() == 0 ||
                         nameForm.getValue().length() == 0) {
+
                     status.setText("Заполните все поля!");
                     status.getElement().setClassName("error");
                 } else {
