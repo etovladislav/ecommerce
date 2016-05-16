@@ -49,14 +49,14 @@ public class ProductGwt implements EntryPoint {
         tabPanel.addBeforeSelectionHandler(new BeforeSelectionHandler<Integer>() {
             @Override
             public void onBeforeSelection(BeforeSelectionEvent<Integer> beforeSelectionEvent) {
-                if (beforeSelectionEvent.getItem() == 1) {
+                if (beforeSelectionEvent.getItem() == 0) {
                     addProductForm.refresCategories();
                 }
                 if (beforeSelectionEvent.getItem() == 4) {
-                    Window.Location.replace("http://localhost:8181/products");//TODO: не работает
+                    Window.Location.replace("http://localhost:8181/products");
                 }
                 if (beforeSelectionEvent.getItem() == 5) {
-                    Window.Location.replace("http://localhost:8181/logout");//TODO: не работает
+                    Window.Location.replace("http://localhost:8181/logout");
                 }
             }
         });

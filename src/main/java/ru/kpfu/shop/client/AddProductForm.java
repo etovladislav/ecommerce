@@ -30,12 +30,13 @@ public class AddProductForm {
 
     private static final String IMAGE_PATTERN
             = "/\\.(gif|jpg|JPEG|tiff|png)$/i";
-
     private static Logger rootLogger = Logger.getLogger("");
+
+    final ListBox list = new ListBox();
+
     public FormPanel getAddProductForm() {
 
         //category select
-        final ListBox list = new ListBox();
 
         callback = new AsyncCallback<List<Category>>() {
 
@@ -46,12 +47,14 @@ public class AddProductForm {
 
             @Override
             public void onSuccess(List<Category> categories) {
-                for (int i = 0; i < list.getItemCount(); i++) {
+                int itemCount = list.getElement().getChildCount();
+                for(int i = 0; i < itemCount; i++) {
                     list.removeItem(i);
                 }
                 for (Category category : categories) {
                     list.addItem(category.getName(), String.valueOf(category.getId()));
                 }
+
             }
 
         };

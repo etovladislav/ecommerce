@@ -14,6 +14,8 @@ import ru.kpfu.shop.model.Category;
 import ru.kpfu.shop.model.Product;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -28,8 +30,10 @@ public class ProductList extends DialogBox {
 
     private AsyncCallback<List<Product>> callbackProduct;
 
+    private final ListBox list = new ListBox();
+
     public FormPanel getEditProductForm(Product product, final MyDialog widgets) {
-        final ListBox list = new ListBox();
+
 
         callback = new AsyncCallback<List<Category>>() {
             @Override
@@ -42,6 +46,7 @@ public class ProductList extends DialogBox {
                 for (int i = 0; i < list.getItemCount(); i++) {
                     list.removeItem(i);
                 }
+
                 for (Category category : categories) {
                     list.addItem(category.getName(), String.valueOf(category.getId()));
                 }
@@ -111,6 +116,7 @@ public class ProductList extends DialogBox {
         Label fileUploadLabel = new Label("Выберете новую картинку:");
         final FileUpload fileUpload = new FileUpload();
         fileUpload.setName("img");
+        fileUpload.getElement().setAttribute("accept", ".png, .jpg, .jpeg");
         fileUpload.addChangeHandler(new ChangeHandler() {
             @Override
             public void onChange(ChangeEvent changeEvent) {
