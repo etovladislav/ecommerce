@@ -48,9 +48,12 @@ public class AddProductForm {
             @Override
             public void onSuccess(List<Category> categories) {
                 int itemCount = list.getElement().getChildCount();
-                for(int i = 0; i < itemCount; i++) {
-                    list.removeItem(i);
+                if (itemCount != 0 && categories != null) {
+                    for(int i = 0; i < itemCount; i++) {
+                        list.removeItem(0);
+                    }
                 }
+
                 for (Category category : categories) {
                     list.addItem(category.getName(), String.valueOf(category.getId()));
                 }
